@@ -26,6 +26,6 @@ def get_db():
         
 def create_tables():
     from models.story import Story
-    from models.node import Node
+    # from models.node import Node
 
     Base.metadata.create_all(bind = engine)
