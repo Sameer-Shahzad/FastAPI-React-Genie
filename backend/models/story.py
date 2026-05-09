@@ -18,4 +18,12 @@ class Node(Base):
     __tablename__ = "nodes"
 
     id = Column(Integer, primary_key = True, index = True)
-    pass
+    story_id = Column(Integer, ForeignKey("stories.id"), nullable = False)
+    content = Column(Text, nullable = False)
+    is_root = Column(Boolean, default = False)
+    story = relationship(argument = "Story", back_populates = "nodes")
+    is_end = Column(Boolean, default = False)
+    is_winning = Column(Boolean, default = False)
+    choices = Column(Json, nullable = True)
+
+    
