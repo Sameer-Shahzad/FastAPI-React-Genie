@@ -1,14 +1,11 @@
-from typing import List, Optional, Dict, Any
+from typing import List, Optional, Dict
 from pydantic import BaseModel
 from datetime import datetime
 
-
-
-
 class StoryBase(BaseModel):
-    text: str
+    text: str 
     node_id: Optional[int] = None
-    
+
 class StoryNodeBase(StoryBase):
     content: str
     is_end: bool = False
@@ -16,21 +13,21 @@ class StoryNodeBase(StoryBase):
 
 class CompleteStoryNode(StoryNodeBase):
     id: int
-    options: List[StoryBase] = []
-    
+    choices: List[StoryBase] = []
+
     class Config:
         from_attributes = True
-        
 
 class CreateStoryRequest(BaseModel):
     theme: str
 
-
 class CompleteStoryResponse(BaseModel):
     id: int
+    title: str 
+    session: str
     created_at: datetime
-    root_node: CompleteStoryNode
-    all_nodes: Dict[int, CompleteStoryNode] = []
-    
+    root_node: Optional[CompleteStoryNode] = None 
+    all_nodes: Dict[int, CompleteStoryNode] = {} 
+
     class Config:
         from_attributes = True
