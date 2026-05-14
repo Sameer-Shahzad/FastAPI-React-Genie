@@ -31,3 +31,5 @@ class CompleteStoryResponse(BaseModel):
 
     class Config:
         from_attributes = True
+        
+        
