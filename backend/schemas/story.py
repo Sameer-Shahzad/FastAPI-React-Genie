@@ -1,3 +1,4 @@
+# Pydantic models for story creation and retrieval
 from typing import List, Optional, Dict
 from pydantic import BaseModel
 from datetime import datetime
